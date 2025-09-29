@@ -59,12 +59,43 @@ public class Account {
         double balance = sc.nextDouble();
         Account acc = new Account(name,balance);
 
-        acc.withdrawal(100);
-        acc.deposit(10000);
-        acc.showHistory();
-        acc.withdrawal(50000);
-        acc.deposit(-150);
-        acc.showHistory();
+        int choice;
+        do {
+            System.out.println("\n--- Account Menu ---");
+            System.out.println("1. Deposit");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Check Balance");
+            System.out.println("4. Show Transaction History");
+            System.out.println("5. Exit");
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter deposit amount: ");
+                    double dep = sc.nextDouble();
+                    acc.deposit(dep);
+                    break;
+                case 2:
+                    System.out.print("Enter withdrawal amount: ");
+                    double wd = sc.nextDouble();
+                    acc.withdrawal(wd);
+                    break;
+                case 3:
+                    System.out.println("Current Balance: " + acc.getBalance());
+                    break;
+                case 4:
+                    acc.showHistory();
+                    break;
+                case 5:
+                    System.out.println("Exiting... Thank you!");
+                    break;
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        } while (choice != 5);
+
+        sc.close();
     }
 
 }
